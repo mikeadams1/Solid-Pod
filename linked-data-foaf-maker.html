@@ -1,0 +1,220 @@
+
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><head xmlns=""><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,target-densityDpi=device-dpi"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="icon" href="/favicon.ico"><link href="http://linkeddatadeveloper.com/callimachus/1.4/styles/callimachus.less?less" rel="stylesheet"><script src="http://linkeddatadeveloper.com/callimachus/scripts.js" type="text/javascript"></script><!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>FOAF Profile Generator</title>
+    
+    <link rel="edit" href="?edit">
+    <link rel="describedby" href="?describe">
+
+    <script type="text/javascript" src="http://linkeddatadeveloper.com/Projects/Linked-Data/Sample-Apps/FOAF-Generator/js/sha1.min.js"></script>
+    <script type="text/javascript" src="http://linkeddatadeveloper.com/Projects/Linked-Data/Sample-Apps/FOAF-Generator/js/index.js"></script>
+
+</head><body><nav class="navbar navbar-default navbar-static-top hidden-iframe"><header class="container"><div class="row"><div class="col-xs-8 col-sm-6 col-md-8"><a href="http://linkeddatadeveloper.com/" class="navbar-brand"><i class="glyphicon glyphicon-group"></i> Linked Data Developer</a></div><div class="col-xs-4 col-sm-6 col-md-4 hidden-login hidden-print"><a href="http://linkeddatadeveloper.com/?login" class="pull-right btn btn-default navbar-btn">Sign in <span class="glyphicon glyphicon-log-in"></span></a></div><div class="hidden-xs col-sm-4 col-md-3 hidden-logout hidden-print"><div class="pull-right"><form class="navbar-form" role="search" method="GET" action="http://linkeddatadeveloper.com/"><div class="input-group"><input xmlns="" type="text" name="q" class="form-control pull-right" placeholder="Lookup..."><span class="input-group-btn"><button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span><span class="sr-only">Search</span></button></span></div></form></div></div><div class="col-xs-4 col-sm-2 col-md-1 hidden-logout hidden-print"><div class="btn-group pull-right"><button type="button" class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown"><span class="sr-only">Main menu</span><span class="glyphicon glyphicon-align-justify"></span></button><ul class="dropdown-menu" role="menu"><li><a href="http://linkeddatadeveloper.com/?view">Home folder</a></li><li><a href="http://linkeddatadeveloper.com/?changes">Recent changes</a></li><li class="visible-xs"><a href="http://linkeddatadeveloper.com/?q">Lookup resources</a></li><li><a href="http://linkeddatadeveloper.com/callimachus/1.4/pages/invite-users.xhtml?view">Invite another user</a></li><li class="divider"></li><li><a href="http://callimachusproject.org/">About Callimachus</a></li><li><a href="http://linkeddatadeveloper.com/callimachus/getting-started-with-callimachus">Getting started</a></li><li><a href="http://groups.google.com/group/callimachus-discuss">Send feedback</a></li><li class="divider"></li><li><a href="?whatlinkshere">What links here</a></li><li><a href="?relatedchanges">Related changes</a></li><li><a href="?permissions" onclick="if(location.search!='?view')return true;calli.openDialog(this.href,this.textContent);return false;">Permissions</a></li><li><a href="?introspect">Introspect resource</a></li><li><a href="javascript:print()">Print this page</a></li><li class="divider"></li><li><a href="http://linkeddatadeveloper.com/?profile">Account</a><script xmlns="" type="text/javascript">
+        calli.resolve($('a').last()).then(function(node){
+            calli.getCurrentUserName().then(function(username){
+                node.text(username || '');
+            });
+        });
+    </script></li><li><a href="http://linkeddatadeveloper.com/" onclick="calli.logout(&#34;http://linkeddatadeveloper.com/&#34;).then(location.assign.bind(location,&#34;http://linkeddatadeveloper.com/&#34;));return false">Sign out</a></li></ul></div></div></div></header></nav><div class="container"><ol class="breadcrumb navbar-left hidden-iframe"><li><a href="http://linkeddatadeveloper.com/">linkeddatadeveloper.com</a></li><li><a href="http://linkeddatadeveloper.com/Projects/">Projects</a></li><li><a href="http://linkeddatadeveloper.com/Projects/Linked-Data/">Linked Data</a></li><li><a href="http://linkeddatadeveloper.com/Projects/Linked-Data/Sample-Apps/">Sample Apps</a></li><li><a href="http://linkeddatadeveloper.com/Projects/Linked-Data/Sample-Apps/FOAF-Generator/">FOAF Generator</a></li><li class="active">index</li></ol><nav class="hidden-logout hidden-iframe hidden-print "><div class="nav nav-tabs clearfix "><ul style="border-bottom:none" class="nav nav-tabs navbar-right "><li class="active"><a tabindex="1" class="active">View</a></li><li class=""><a href="?edit" tabindex="2" onclick="location.replace(href);return false">Edit</a></li><li class=""><a href="?discussion" tabindex="3" onclick="location.replace(href);return false"><script xmlns="" type="text/javascript" class="">
+            calli.insertDiscussionBadge('?discussion', $('script').get(-1).parentNode);
+        </script>Discussion</a></li><li class=""><a href="?describe" tabindex="4" onclick="location.replace(href);return false">Describe</a></li><li class=""><a href="?history" tabindex="5" onclick="location.replace(href);return false">History</a></li></ul></div><br xmlns="" class=""></nav><div class="clearfix"></div><div id="calli-error"><div id="calli-error-template" style="display:none"><div class="alert alert-danger alert-dismissable alert-block"><button type="button" class="close" data-dismiss="alert">×</button><h4>Oops!</h4></div></div></div></div>
+	<h1 align="center">Basic FOAF Profile</h1>
+    <h2>FOAF Profile Instructions</h2>
+    <p>
+        Fill out the fields directly below this text to complete a basic FOAF Profile. Optional items are available further down the page in the Tabs Section. These options include people you know, social networks to which you
+        may belong, and other additional information described by the FOAF vocabulary.
+    </p>
+    <p>
+        Remember, as with all other online profiles, do not publish any information you wish to keep completely private. This is particularly applicable with informartion such as an email address - which most people do not 
+        want to give out in an effort to avoid spam.
+    </p>
+    <p>
+        <i>Note</i>: None of the information you enter in this generator is used or stored in any way. Your privacy can be assured
+        because the file is processed using JavaScript and is entirely client-side.
+    </p>
+    
+    <h2>Wish List Bookmarklet Instructions</h2>
+    <form id="wishForm">
+        <p>
+            In chapter 4 of the book we discuss connecting your FOAF Profile to a 'Wish List' of items you want. This is
+            done via a Bookmarklet that gets added to your browser. To add that bookmarklet, enter your wish list link into
+            the input box below and hit Enter. Then drag the link generated next to it into your bookmarks bar. It can then be used on the 
+            page of any product you want to add to your wish list by simply clicking it, copying the output, and adding it 
+            to your wish list.
+        </p>
+        <p>
+            Wish List Link: <input xmlns="" type="url" id="userWishListLink" size="50" placeholder="http://">
+        </p>
+    </form>
+    
+    <p id="results" style="display:none">
+        Drag this link to your bookmarks bar: <a id="bookmarkletLink">Create Bookmarklet</a>
+    </p>
+    
+    <h2>FOAF Profile Form</h2>
+    <form name="basic" action="#">
+        <div class="row-fluid">
+            <div class="span6">
+                <label>Base URI</label>
+                <input xmlns="" type="text" id="baseURI" placeholder="http://" class="input-large">
+            
+                <label>Your Email Address</label>
+            	<input xmlns="" type="email" id="email" class="input-large">
+            
+            	<label>Homepage</label>
+            	<input xmlns="" type="url" id="homepage" placeholder="http://" class="input-large">    
+            </div>
+            <div class="span6">
+                <label>Title (Mr, Ms, Mrs, Dr, etc)</label>
+                <input xmlns="" type="text" id="title">
+            
+            	<label>First Name (Given)</label>
+            	<input xmlns="" type="text" id="firstName">
+            
+            	<label>Last Name (Family/Surname)</label>
+            	<input xmlns="" type="text" id="lastName">
+            
+            	<label>Nickname</label>
+            	<input xmlns="" type="text" id="nickName">
+            </div>
+        </div>
+	</form>
+    <br xmlns=""><br xmlns="">
+    <div class="tabbable">  
+        <ul class="nav nav-tabs">  
+            <li class="active"><a href="#tabs-1" data-toggle="tab">Friends I Know</a></li>  
+            <li><a href="#tabs-2" data-toggle="tab">Social Networking</a></li>  
+            <li><a href="#tabs-3" data-toggle="tab">Additional Info</a></li>  
+        </ul>  
+        <div class="tab-content">  
+            <div class="tab-pane active" id="tabs-1">  
+                <form name="knows" action="">
+				    <h2>Friends I Know</h2>
+                    <p> Here you can add people you know to your FOAF Profile by entering their names and email addresses
+                    into the fields below. If they have a publically accessible FOAF Profile on the Web, place the link 
+                    to it in the FOAF Link field.</p>
+				    <table id="friendTable">
+					    <tr>
+						    <td>Name: </td>
+						    <td><input xmlns="" type="text" id="friendName1"></td>
+                            <td>Email: </td>
+                            <td><input xmlns="" type="text" id="friendEmail1"></td>
+                            <td>FOAF Link: </td>
+                            <td><input xmlns="" type="url" id="friendFOAF1" placeholder="http://" size="40"></td>
+					    </tr>
+                        <tr>
+						    <td>Name: </td>
+						    <td><input xmlns="" type="text" id="friendName2"></td>
+                            <td>Email: </td>
+                            <td><input xmlns="" type="text" id="friendEmail2"></td>
+                            <td>FOAF Link: </td>
+                            <td><input xmlns="" type="url" id="friendFOAF2" placeholder="http://" size="40"></td>
+					    </tr>
+                        <tr>
+						    <td>Name: </td>
+						    <td><input xmlns="" type="text" id="friendName3"></td>
+                            <td>Email: </td>
+                            <td><input xmlns="" type="text" id="friendEmail3"></td>
+                            <td>FOAF Link: </td>
+                            <td><input xmlns="" type="url" id="friendFOAF3" placeholder="http://" size="40"></td>
+					    </tr>
+                        <div id="addTextField"></div>
+					    <tr>
+						    <td colspan="2">
+						        <form name="addInput">
+							        <button class="btn btn-info" id="add" onClick="addInput()">Add Friend</button>
+						        </form>
+						    </td>
+					    </tr>
+				    </table>
+			    </form>
+            </div>  
+            <div class="tab-pane" id="tabs-2">
+                <form name="socialNetworking" action="">
+				    <h2>Social Networking</h2>
+                    <p>Below you can add social networking attributes to your FOAF Profile.</p>
+				    <table>
+					    <tr>
+							<td>Blog:</td>
+							<td><input xmlns="" type="url" id="blog" size="50" placeholder="http://"></td>
+						</tr>
+						<tr>
+							<td>Skype ID:</td>
+							<td><input xmlns="" type="text" id="skype" size="50"></td>
+						</tr>
+                        <tr>
+    						<td>Tip Jar:</td>
+							<td><input xmlns="" type="url" id="tipJar" size="50" placeholder="http://"></td>
+						</tr>
+                        <tr>
+            				<td>Linked In:</td>
+							<td><input xmlns="" type="url" id="linkedIn" size="50" placeholder="https://www.linkedin.com/in/"></td>
+						</tr>
+                        <tr>
+            				<td>Facebook:</td>
+							<td><input xmlns="" type="url" id="facebook" size="50" placeholder="https://www.facebook.com/"></td>
+						</tr>
+                        <tr>
+            				<td>Twitter:</td>
+							<td><input xmlns="" type="url" id="twitter" size="50" placeholder="https://www.twitter.com/"></td>
+						</tr>
+				    </table>
+			    </form>
+            </div>
+            <div class="tab-pane" id="tabs-3">
+                <form name="advanced" action="">
+    				<h2>Additional Information</h2>
+                    <p>Here you can fill out any additional information you would like added to your FOAF Profile.
+                    If a field does not apply to you or you do not wish to share the information, simply leave the field
+                    blank.</p>
+					<table>
+						<tr>
+							<td>Age:</td>
+							<td><input xmlns="" type="number" id="age"></td>
+						</tr>
+						<tr>
+							<td>Workplace Homepage:</td>
+							<td><input xmlns="" type="url" id="workHomePage" size="50" placeholder="http://"></td>
+						</tr>
+						<tr>
+							<td>School Homepage:</td>
+							<td><input xmlns="" type="url" id="schoolHomePage" size="50" placeholder="http://"></td>
+						</tr>
+						<tr>
+							<td>Based Near:</td>
+							<td><input xmlns="" type="text" id="basedNear" size="50"></td>
+						</tr>
+						<tr>
+							<td>Current Project:</td>
+							<td><input xmlns="" type="url" id="currentProject" size="50" placeholder="http://"></td>
+						</tr>
+						<tr>
+							<td>Image:</td>
+							<td><input xmlns="" type="url" id="image" size="50" placeholder="http://"></td>
+						</tr>
+						<tr>
+							<td>Most Recent Publication:</td>
+							<td><input xmlns="" type="url" id="publications" size="50" placeholder="http://"></td>
+						</tr>
+						<tr>
+							<td>Made:</td>
+							<td><input xmlns="" type="url" id="made" size="50" placeholder="http://"></td>
+						</tr>
+					</table>
+				</form>
+            </div>
+        </div>
+    </div>
+    <br xmlns="">
+    <button id="submit" class="btn btn-info" type="submit" onClick="makeTurtle()">Make my FOAF profile!</button>
+    <br xmlns=""><br xmlns="">
+    <textarea id="output" style="width:90%; height:200px" name="output" class="output"></textarea>
+    <br xmlns=""><br xmlns="">
+    <button type="submit" class="btn btn-info" onClick="clearOutput()">Reset form</button>
+    <br xmlns=""><br xmlns="">
+<div class="navbar navbar-default navbar-large navbar-relative-bottom hidden-iframe"><footer class="navbar-inner"><div class="container"><p class="navbar-right navbar-text"><a href="http://callimachusproject.org/" title="Callimachus"><img xmlns="" src="http://linkeddatadeveloper.com/callimachus/callimachus-powered.png" alt="Callimachus" width="98" height="35"></a></p><p class="navbar-text">This resource was last modified at <time datatype="http://www.w3.org/2001/XMLSchema#dateTime" datetime="2015-04-28T22:49:57.202Z">2015-04-28T22:49:57.202Z</time><script xmlns="" type="text/javascript">
+                        $('time').last().text(calli.parseDateTime($('time').get(-1)).toLocaleString());
+                    </script></p></div></footer></div></body></html>
